@@ -12,5 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "MacroAutomation"
+
+rootProject.name = "Macro-automation"
 include(":app")
