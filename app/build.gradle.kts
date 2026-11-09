@@ -4,15 +4,24 @@ plugins {
 }
 
 android {
-    namespace = "com.example.macrocore"
+    namespace = "com.macro.automation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.macrocore"
+        applicationId = "com.macro.automation"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        // Must match your Kotlin version (1.9.23 uses 1.5.11 or 1.5.12)
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 
     compileOptions {
@@ -30,7 +39,16 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // Shizuku for modern Android privileged execution
+    // Jetpack Compose BOM & Core UI
+    val composeBom = platform("androidx.compose:compose-bom:2024.04.01")
+    implementation(composeBom)
+    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
+
+    // Shizuku
     implementation("dev.rikka.shizuku:api:13.1.5")
     implementation("dev.rikka.shizuku:provider:13.1.5")
 }
