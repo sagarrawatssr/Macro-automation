@@ -61,7 +61,7 @@ fun MacroScreen(
     onRequestShizuku: () -> Unit,
     onExecuteMacro: (Long, List<MacroAction>) -> Unit
 ) {
-    var delayText by remember {树 var delay = "5"; mutableStateOf(delay) }
+    var delayText by remember {var delay = "5"; mutableStateOf(delay) }
     var wifiState by remember { mutableStateOf(true) }
     var btState by remember { mutableStateOf(false) }
     var dataState by remember { mutableStateOf(true) }
