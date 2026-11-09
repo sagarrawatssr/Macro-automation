@@ -2,11 +2,16 @@ package com.macro.automation.service
 
 import android.content.pm.PackageManager
 import dev.rikka.shizuku.Shizuku
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import java.lang.reflect.Method
 
 object ActionExecutor {
+
+    /**
+     * Primary entry point called by AutomationService
+     */
+    fun execute(command: String): Boolean {
+        return executeShell(command)
+    }
 
     fun executeShell(command: String): Boolean {
         return try {
@@ -25,7 +30,6 @@ object ActionExecutor {
 
     private fun executeViaShizuku(command: String): Process? {
         return try {
-            // Shizuku.newProcess is private in newer API distributions; invoke via reflection
             val newProcessMethod: Method = Shizuku::class.java.getDeclaredMethod(
                 "newProcess",
                 Array<String>::class.java,
